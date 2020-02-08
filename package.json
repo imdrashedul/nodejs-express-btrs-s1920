@@ -1,0 +1,34 @@
+{
+  "name": "btrs-express",
+  "version": "1.0.0",
+  "description": "Bus Ticket Reservation System (Express)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rashed370/nodejs-express-btrs-s1920.git"
+  },
+  "keywords": [
+    "bus",
+    "tickets",
+    "reservation"
+  ],
+  "author": "M. RASHEDUL ISLAM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rashed370/nodejs-express-btrs-s1920/issues"
+  },
+  "homepage": "https://github.com/rashed370/nodejs-express-btrs-s1920#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
