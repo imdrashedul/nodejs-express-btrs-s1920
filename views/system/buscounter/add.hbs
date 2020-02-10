@@ -1,0 +1,67 @@
+<div class="block">
+    <div class="header">
+        <b>Add Bus Counter</b>
+        <a href="{{route request "system/buscounter"}}" class="btn back red" title="Cancel"><span>Cancel</span></a>
+    </div>
+    <div class="body">
+        <form action="{{route request "system/buscounter/add"}}" method="POST">
+           
+            <div class="grid">
+                <div class="row">
+                    <div class="column-12">
+                        <div class="inputset">
+                            <label for="bus_operator">Bus Operator</label><br>
+                            <select name="bus_operator" id="bus_operator">
+                                <option value="">Select</option>
+                                
+                            </select><br>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="name">Counter Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter Counter Name" value="" size="24"><br/>
+                            
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="counter_location">Counter Location</label>
+                            <input type="text" name="counter_location" id="counter_location" placeholder="Enter full location" value="" size="24"><br/>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="counter_type">Counter Type</label>
+                            <input type="text" name="counter_type" id="counter_type" placeholder="Enter Cunter Type" value="" size="24"><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-12">
+                        <div class="inputset">
+                            <label for="description">Description</label><br>
+                            <textarea name="description" id="description" rows="4" cols="20"></textarea>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" name="submit" class="btn submit" value="Add Counter">
+        </form>
+    </div>
+</div>
