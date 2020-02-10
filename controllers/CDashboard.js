@@ -6,5 +6,5 @@
  */
 
 module.exports = (request, response, next) => {
-    return response.render('system/login', { layout: false, title: 'BTRS - Login', request: request });
+    return response.render('system/dashboard', { layout: 'system', title: 'Dashboard', active:'index', navigations: [], request: request });
 };

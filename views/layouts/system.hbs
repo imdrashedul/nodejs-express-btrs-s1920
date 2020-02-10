@@ -1,0 +1,150 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>BTRS - {{ title }} </title>
+        <link rel="stylesheet" href="{{asset request "system/assets/css/styles.css"}}">
+        <link rel="stylesheet" href="{{asset request "assets/css/flatpickr.min.css"}}">
+        <link rel="stylesheet" href="{{asset request "assets/css/autocomplete.css"}}">
+        <link rel="shortcut icon" href="{{asset request "system/assets/img/fav.png"}}" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            html {
+                position:relative;
+                min-height:100%;
+                background:#fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="system">
+            <!-- SYSTEM HEADER -->
+            <nav class="navbar">
+                <div class="header">
+                    <div class="left">
+                        <a class="logo" href="">
+                            <b><img src="{{asset request "system/assets/img/logo-white-v2.png"}}" alt="home" height="47px" width="200px"></b>
+                        </a>
+                    </div>
+                    <div class="right">
+                        <div class="usermenu drop">
+                            <div class="toggle">
+                                <img src="{{asset request "system/assets/img/default_avatar.png"}}" class="icon" alt="userimg" width="36px" height="36px">
+                                <b class="username">M. Rashedul</b>
+                                <span class="caret"></span>
+                            </div>
+                            <div class="content">
+                                <div class="userdetails">
+                                    <div class="userimage">
+                                        <img src="{{asset request "system/assets/img/default_avatar.png"}}" alt="user">
+                                    </div>
+                                    <div class="usertext">
+                                        <h4>M. Rashedul Islam</h4>
+                                        <p class="text-muted">rashed.islam.370@gmail.com</p>
+                                        <a href="{{route request 'system/profile'}}" class="btn target green"><span>View Profile</span></a>
+                                    </div>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="menu">
+                                    <a href="{{route request 'system/validbusmanager'}}"><img src="{{asset request "system/assets/img/validation.png"}}"> Validation <span class="label-validation">0</span></a>
+                                </div>
+                                <div class="separator"></div>
+                                <div class="menu">
+                                    <a href="{{route request ''}}"><img src="{{asset request "system/assets/img/logout.png"}}"> Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- SYSTEM SIDEBAR -->
+            <div class="sidebar" role="navigation">
+                <ul class="menu">
+                    {{{renderMenu request 'index' active '' 'Dashboard'}}}
+                    <li class="divider"></li>
+                    {{{renderMenu request 'supportstaff' active 'supportstaff' 'Support Staff'}}}
+                    {{{renderMenu request 'busmanager' active 'busmanager' 'Bus Manager'}}}
+                    {{{renderMenu request 'buscounter' active 'buscounter' 'Bus Counter'}}}
+                    {{{renderMenu request 'counterstaff' active 'counterstaff' 'Counter Staff'}}}
+                    <li class="divider"></li>
+                    {{{renderMenu request 'managebus' active 'managebus' 'Manage Bus'}}}
+                    {{{renderMenu request 'busschedule' active 'busschedule' 'Bus Schedule'}}}
+                    {{{renderMenu request 'tickets' active 'tickets' 'Tickets'}}}
+                    {{{renderMenu request 'booktickets' active 'booktickets' 'Book Tickets'}}}
+                    <li class="divider"></li>
+                    {{{renderMenu request 'discount' active 'discount' 'Discount'}}}
+                    {{{renderMenu request 'transaction' active 'transaction' 'Transactions'}}}
+                    {{{renderMenu request 'paymethod' active 'paymethod' 'Payment Method'}}}
+                    {{{renderMenu request 'supportticket' active 'supportticket' 'Support Tickets'}}}
+                    {{{renderMenu request 'settings' active 'settings' 'General Settings'}}}
+                </ul>
+            </div>
+
+            <!-- SYSTEM MAIN -->
+            <div class="wrapper" role="application">
+                <div class="preloader">
+                    <svg version="1.0" width="64px" height="64px" viewBox="0 0 128 128">
+                        <rect x="0" y="0" width="100%" height="100%" fill="#FFFFFF" /><g><path d="M64 9.75A54.25 54.25 0 0 0 9.75 64H0a64 64 0 0 1 128 0h-9.75A54.25 54.25 0 0 0 64 9.75z" fill="#0d8035" fill-opacity="1"/><animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1800ms" repeatCount="indefinite"></animateTransform></g>
+                    </svg>
+                </div>
+                <div class="nav-horizontal">
+                    <ul class="breadcrumb">
+                        {{#if navigations.length}}
+                            {{#each navigations}}
+                                <li><a href="{{route ../request this.[0]}}">{{ this.[1] }}</a></li>
+                            {{/each}}
+                        {{/if}}
+                        <li>{{ title}}</li>
+                    </ul>
+                </div>
+                <div class="main">
+                    {{{ body }}}
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="left"> &#0169; {{copyright}} BTRS - All Rights Reserved </div>
+                <div class="right"> Developed By <b>M. Rashedul Islam</b> </div>
+            </footer>
+        </div>
+        <script type="text/javascript" src="{{asset request "assets/js/flatpickr.js"}}"></script>
+        <script type="text/javascript" src="{{asset request "assets/js/ajax.js"}}"></script>
+        <script type="text/javascript" src="{{asset request "system/assets/js/script.js"}}"></script>
+        <script type="text/javascript" src="{{asset request "assets/js/autocomplete.js"}}"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelector('.preloader').classList.add('hidden');
+                document.querySelector('.drop .toggle').addEventListener('click', function (e) {
+                    this.parentNode.classList.toggle("open");
+                });
+
+                window.onclick = function (e) {
+                    var dropMenus = document.querySelectorAll('.drop.open');
+                    dropMenus.forEach(function (menu) {
+                        if (!menu.contains(e.target)) {
+                            menu.classList.remove('open');
+                        }
+                    });
+                };
+
+                var resizeWrapper = function () {
+                    var offset = 70,
+                        height = ((window.innerHeight > 0) ? window.innerHeight : this.screen.height) - 1;
+                    height -= offset;
+                    height = height < 1 ? 1 : height;
+
+                    if (height > offset) {
+                        document.querySelector('.system .wrapper').style = 'min-height: ' + height + 'px;';
+                    }
+                };
+
+                resizeWrapper();
+
+                if (window.attachEvent) {
+                    window.attachEvent('onresize', resizeWrapper);
+                } else if (window.addEventListener) {
+                    window.addEventListener('resize', resizeWrapper);
+                }
+            });
+        </script>
+    </body>
+</html>

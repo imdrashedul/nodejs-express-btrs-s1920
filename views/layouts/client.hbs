@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <link rel="stylesheet" href="{{asset request "assets/css/styles.css"}}">
+        <link rel="stylesheet" href="{{asset request "assets/css/flatpickr.min.css"}}">
+        <link rel="stylesheet" href="{{asset request "assets/css/autocomplete.css"}}">
+        <link rel="shortcut icon" href="{{asset request "assets/img/fav.png"}}" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="general">
+            <div class="header">
+                <div class="block">
+                    <img class="logo" src="{{asset request "assets/img/logo-white-v2.png"}}" alt="home" height="47px" width="200px">
+                    <a href="{{route request 'system/login'}}">Login</a>
+                    <a href="#">Print/Verify</a>
+                    <a href="#">Cancel Ticket</a>
+                    <a href="#">Help</a>
+                </div>
+            </div>
+            <div class="wrapper">
+                {{{ body }}}
+                <div class="payment-methods">
+                    <div class="block">
+                        <h1> WE ACCEPT </h1>
+                        <img src="{{asset request "assets/img/method-logo.jpg"}}">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="block">
+                    <div>
+                        <img src="{{asset request "assets/img/logo-white-v2.png"}}" alt="logo" width="160px" height="38px">
+                        <p>BTRS is a premium booking portal which allows you to purchase tickets for various bus services across the country.</p>
+                    </div>
+                    <div>
+                        <h4>Company Info</h4>
+                        <ul>
+                            <li>
+                                <a href="javascript:void(0)">Terms &amp; Conditions</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">How To Buy Tickets</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-4">About BTRS</h4>
+                        <ul class="pl-0">
+                            <li>
+                                <a href="javascript:void(0)">About Us</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <footer>&#0169; {{copyright}} BTRS. All Rights Reserved</footer>
+        </div>
+        <script type="text/javascript" src="{{asset request "assets/js/flatpickr.js"}}"></script>
+        <script type="text/javascript" src="{{asset request "assets/js/autocomplete.js"}}"></script>
+        <script type="text/javascript" src="{{asset request "assets/js/ajax.js"}}"></script>
+        <script type="text/javascript" src="{{asset request "assets/js/script.js"}}"></script>
+    </body>
+</html>

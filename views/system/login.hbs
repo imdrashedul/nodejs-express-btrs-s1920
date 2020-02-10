@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+    <link rel="stylesheet" href="{{asset request "system/assets/css/styles.css"}}">
+    <link rel="shortcut icon" href="{{asset request "system/assets/img/fav.png"}}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="login">
+        <h2 class="logtitle" align="center">Login to System</h2>
+        <div class="container">
+            <form method="GET" action="{{route request 'system'}}">
+                <div class="inputset">
+                    <label for="email">Email</label><br>
+                    <input type="email" name="email" id="email" placeholder="Enter your email addresss"><br/>
+                </div>
+                <div class="inputset">
+                    <label for="password">Password</label><br>
+                    <input type="password" name="password" id="password"><br>
+                </div>
+                <input type="submit" name="submit" value="Login">
+                <a href="javascript:void(0)" class="forgot-password">Forgot Password?</a>
+            </form>
+        </div>
+        <div class="log-footer">
+            Want to join as Company? <a href="{{route request 'system/register'}}">Create an Account</a>
+        </div>
+    </div>
+</body>
+</html>
