@@ -1,0 +1,65 @@
+<div class="page-area">
+        <div class="block">
+            <div class="departure">
+                <p> -  on </p>
+            </div>
+            <div class="bus-lists">
+                <form id="SearchForm" action="search.php" method="get">
+                    <div>
+                        <label for="from">From</label><br>
+                        <div style="width: 100%">
+                        <input type="text" name="from" id="from" value="">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="to">To</label><br>
+                        <div style="width: 100%">
+                        <input type="text" name="to" id="to" value="">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="departure">Date of Journey</label><br>
+                        <input type="text" name="departure" id="departure" value="">
+                    </div>
+                    <div>
+                        <input type="submit" value="Search">
+                    </div>
+                </form>
+                <table class="list">
+                    <thead>
+                    <tr>
+                        <th>Operator (Bus Type)</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Seats Available</th>
+                        <th>Fare</th>
+                    </tr>
+                    <thead>
+                    <tbody>
+                   
+                    <tr>
+                        <td>
+                            <span class="operator"></span>
+                            , <br>
+                            
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <span>৳ </span>
+                            <button class="expand-bookings" scheduleid="">View Seats</button>
+                        </td>
+                    </tr>
+                 
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            No trips found. Please call our call centre @ 10210 and we might arrange the tickets for you.
+                        </td>
+                    </tr>
+                 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
