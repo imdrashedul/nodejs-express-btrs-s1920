@@ -10,10 +10,17 @@ const cLanding = require( pathController + 'CLanding' );
 const cLogin = require(pathController + '/CLogin');
 const cDashboard = require(pathController + '/CDashboard');
 const cSearch = require(pathController + '/CSearch');
+const cRegister = require(pathController + '/CRegister');
+const cBusCounter = require(pathController + '/CBusCounter');
+
 
 exports.route = router => {
     router.get('/', cLanding);
     router.get('/search', cSearch);
     router.get('/system', cDashboard);
     router.get('/system/login', cLogin);
+    router.get('/system/register', cRegister);
+    router.get('/system/buscounter', cBusCounter.index);
+    router.get('/system/buscounter/add', cBusCounter.add);
+    router.get('/system/buscounter/edit', cBusCounter.edit);
 };
