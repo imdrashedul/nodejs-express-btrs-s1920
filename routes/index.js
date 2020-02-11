@@ -12,6 +12,11 @@ const cDashboard = require(pathController + '/CDashboard');
 const cSearch = require(pathController + '/CSearch');
 const cRegister = require(pathController + '/CRegister');
 const cBusCounter = require(pathController + '/CBusCounter');
+const cCounterStaff = require(pathController + '/CCounterStaff');
+const cManageBus = require(pathController + '/CManageBus');
+const cBusSchedule = require(pathController + '/CBusSchedule');
+const cTickets = require(pathController + '/CTickets');
+const cTransaction = require(pathController + '/CTransaction');
 
 
 exports.route = router => {
@@ -23,4 +28,15 @@ exports.route = router => {
     router.get('/system/buscounter', cBusCounter.index);
     router.get('/system/buscounter/add', cBusCounter.add);
     router.get('/system/buscounter/edit', cBusCounter.edit);
+    router.get('/system/counterstaff', cCounterStaff.index);
+    router.get('/system/counterstaff/add', cCounterStaff.add);
+    router.get('/system/counterstaff/edit', cCounterStaff.edit);
+    router.get('/system/managebus', cManageBus.index);
+    router.get('/system/managebus/add', cManageBus.add);
+    router.get('/system/managebus/edit', cManageBus.edit);
+    router.get('/system/busschedule', cBusSchedule.index);
+    router.get('/system/busschedule/add', cBusSchedule.add);
+    router.get('/system/busschedule/edit', cBusSchedule.edit);
+    router.get('/system/tickets', cTickets);
+    router.get('/system/transaction', cTransaction);
 };

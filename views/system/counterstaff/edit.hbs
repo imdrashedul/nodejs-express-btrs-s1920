@@ -1,0 +1,237 @@
+<div class="block">
+
+    <div class="header">
+        <b>Add Counter Staff</b>
+        <a href="{{route request "system/counterstaff"}}" class="btn back red" title="Cancel"><span>Cancel</span></a>
+    </div>
+    <div class="body">
+        <form action="{{route request "system/counterstaff/edit"}}" method="POST" enctype="multipart/form-data">
+            <h4 class="block divider left"><span>Personal Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" id="first_name" placeholder="Enter First Name" value=""><br/>
+                            
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" value=""><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="dob_day">Date of Birth</label><br>
+                            <select name="dob_day" id="dob_day" style="width:30%">
+                                <option value=''>Day</option>
+                                
+                            </select>
+                            <select name="dob_month" style="width:40%">
+                                <option value=''>Month</option>
+                                
+                            </select>
+                            <select name="dob_year" style="width:26.77%">
+                                <option value=''>Year</option>
+                                
+                            </select>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="gender_male">Gender</label><br>
+                            <label class="radio m-r-45">
+                                <input type="radio" name="gender" id="gender_male" value="m"> Male
+                                <span class="check"></span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="gender" id="gender_female" value="f"> Female
+                                <span class="check"></span>
+                            </label>
+                            <br>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="marital_status">Marital Status</label><br>
+                            <select name="marital_status" id="marital_status">
+                                <option value="">Select</option>
+                                <option value="Unmarried">Unmarried</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                                <option value="Widowed">Widowed</option>
+                            </select><br>
+                            
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="nid_passport">NID / Passport</label><br>
+                            <input type="text" name="nid_passport" id="nid_passport" placeholder="Enter NID or Passport No" value=""><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="photograph">Photograph</label><br>
+                            <div class="grid">
+                                <div class="row">
+                                    <div class="column-3">
+                                        <img class="upload-preview photograph m-t-5" src="assets/img/gentelman_avatar.jpg" width="80px" height="80px" defaultpreview="assets/img/gentelman_avatar.jpg">
+                                    </div>
+                                    <div class="column-9" style="padding-right: 10px; vertical-align: top">
+                                        <input type="text" class="upload-name photograph" value="" readonly style="margin-top: 9px">
+                                        <button type="button" class="file-clear photograph" filetarget="photograph">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="174.239" height="174.239" viewBox="0 0 174.239 174.239">
+                                                <path d="M146.537,1.047c-1.396-1.396-3.681-1.396-5.077,0L89.658,52.849c-1.396,1.396-3.681,1.396-5.077,0L32.78,1.047 c-1.396-1.396-3.681-1.396-5.077,0L1.047,27.702c-1.396,1.396-1.396,3.681,0,5.077l51.802,51.802c1.396,1.396,1.396,3.681,0,5.077L1.047,141.46c-1.396,1.396-1.396,3.681,0,5.077l26.655,26.655c1.396,1.396,3.681,1.396,5.077,0l51.802-51.802c1.396-1.396,3.681-1.396,5.077,0l51.801,51.801c1.396,1.396,3.681,1.396,5.077,0l26.655-26.655c1.396-1.396,1.396-3.681,0-5.077l-51.801-51.801c-1.396-1.396-1.396-3.681,0-5.077l51.801-51.801c1.396-1.396,1.396-3.681,0-5.077L146.537,1.047z"/>
+                                            </svg>
+                                            Clear
+                                        </button>
+                                        <label class="file-input photograph">
+                                            <input type="file" accept="image/jpeg,image/png,image/gif" name="photograph" id="photograph">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                                                <path d="M480,80h-96c-17.688,0-32,14.313-32,32H96v32h288h88.969l-43.094,215.5L384,176H0l64,256h384l64-320l0,0C512,94.313,497.688,80,480,80z"/>
+                                            </svg>
+                                            <span class="m-l-5">Browse..</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                    <div class="row">
+                                        <div class="column-3"></div>
+                                        <div class="column-9">
+                                            
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="block divider left"><span>Contact Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="street">Street Address</label><br>
+                            <input type="text" name="street" id="street" placeholder="Enter Street Address" value=""><br/>
+                            
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="">
+                            <label for="mobile">Mobile Number</label><br>
+                            <input type="text" name="mobile" id="mobile" placeholder="(+88) 0XXXX-XXXXXX" value=""><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="city">City</label><br>
+                            <input type="text" name="city" id="city" placeholder="Enter City Name" value=""><br/>
+                            
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="zip">Zip Code</label><br>
+                            <input type="text" name="zip" id="zip" placeholder="Enter Zip/Postal Code" value=""><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset" style="padding-right: 10px">
+                            <label for="country">Country</label><br>
+                            <select name="country" id="country" >
+                                <option value="">Select</option>
+                                <option value="bd">Bangladesh</option>
+                            </select><br>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="block divider left"><span>Official Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    
+                    <div class="column-6">
+                        <div class="inputset">
+                        <label for="bus_operator">Bus Operator</label><br>
+                        <select name="bus_operator" id="bus_operator">
+                            <option value="">Select</option>
+                            <?= listBusCompany((isset($_POST['bus_operator']) ? $_POST['bus_operator'] : '')) ?>
+                            </select><br>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="<?= accessController($user['role'], BTRS_ROLE_SUPPORT_STAFF, BTRS_ROLE_ADMIN) ? 'column-6' : 'column-12' ?>">
+                        <div class="inputset">
+                        <label for="bus_counter">Counter</label><br>
+                        <select name="bus_counter" id="bus_counter">
+                            
+                            <option value="">Select</option>
+                            
+                            
+                                <option value="">Select</option>
+                                
+                            
+                            <option value="">Select Operator First</option>
+                            
+                        </select><br>
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="block divider left"><span>Login Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-12">
+                        <div class="inputset">
+                            <label for="usermail">Email Address</label><br>
+                            <input type="email" name="usermail" id="usermail" placeholder="Enter email address" value=""><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="password">Password</label><br>
+                            <input type="password" name="password" id="password"><br/>
+                            
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset">
+                            <label for="repassword">Confirm Password</label><br>
+                            <input type="password" name="repassword" id="repassword"><br/>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" name="submit" class="btn submit" value="Add Counter Staff">
+        </form>
+    </div>
+</div>
