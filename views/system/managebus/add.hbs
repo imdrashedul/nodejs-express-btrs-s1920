@@ -1,0 +1,33 @@
+<div class="block">
+    <div class="header">
+        <b>Lis of All Buses</b>
+        <a href="{{route request "system/managebus/add"}}" class="btn target blue" title="Add New Bus"><span>Add New</span></a>
+    </div>
+    <div class="body">
+        <table class="datatable">
+            <thead>
+            <tr>
+                <th>Name/Model</th>
+                <th>Company</th>
+                <th>Registration No</th>
+                <th>Type</th>
+                <th>Seats</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            
+            </tbody>
+        </table>
+        <div class="grid">
+            <div class="row">
+                <div class="column-4 ">
+                    <?= getPaginationInfo($page, $total) ?>
+                </div>
+                <div class="column-8 text-right">
+                    <?= getPagination($page, $total, 'managebus.php?page=') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
