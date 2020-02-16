@@ -5,15 +5,19 @@
  * @see https://github.com/rashed370/nodejs-express-btrs-s1920
  */
 
+require(__dirname + '/modules/database');
+
 const path = require('path');
 const express = require( 'express' );
 const app = express();
 const router = express.Router();
 const bootstrap = require('./bootstrap'); 
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
 const helper = require('./modules/helper');
+
 
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'default', layoutsDir: __dirname + '/views/layouts/', helpers: helper  }));
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +25,7 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
+app.use(session({secret: 'gTS#2Aa9u1r%1#j52', saveUninitialized: true, resave: false, cookie: { maxAge: 600000 }}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(router);
 

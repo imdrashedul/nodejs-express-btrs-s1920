@@ -10,16 +10,18 @@
     <div class="login">
         <h2 class="logtitle" align="center">Login to System</h2>
         <div class="container">
-            <form method="GET" action="{{route request 'system'}}">
-                <div class="inputset">
+            <form method="POST" action="{{route request 'system/login'}}">
+                <div class="inputset{{renderError request errors 'email' true}}">
                     <label for="email">Email</label><br>
-                    <input type="email" name="email" id="email" placeholder="Enter your email addresss"><br/>
+                    <input type="email" name="email" id="email" placeholder="Enter your email addresss" value="{{formData formdata 'email'}}"><br/>
+                    {{{renderError request errors 'email'}}}
                 </div>
-                <div class="inputset">
+                <div class="inputset{{renderError request errors 'password' true}}">
                     <label for="password">Password</label><br>
                     <input type="password" name="password" id="password"><br>
+                    {{{renderError request errors 'password'}}}
                 </div>
-                <input type="submit" name="submit" value="Login">
+                <input type="submit" value="Login">
                 <a href="javascript:void(0)" class="forgot-password">Forgot Password?</a>
             </form>
         </div>

@@ -32,7 +32,8 @@ exports.route = router => {
     router.get('/checkout', cCheckOut.index);
     router.get('/checkout/complete', cCheckOut.complete);
     router.get('/system', cDashboard);
-    router.get('/system/login', cLogin);
+    router.get('/system/login', cLogin.get);
+    router.post('/system/login', cLogin.post);
     router.get('/system/register', cRegister);
     router.get('/system/buscounter', cBusCounter.index);
     router.get('/system/buscounter/add', cBusCounter.add);
