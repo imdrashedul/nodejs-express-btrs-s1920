@@ -5,7 +5,8 @@
  * @see https://github.com/rashed370/nodejs-express-btrs-s1920
  */
 
-var dateFormat = require('dateformat');
+const dateFormat = require('dateformat');
+const bcrypt = require('bcrypt');
 
 exports.base_url = (request) => {
     return request.protocol + '://' + request.get('host') + '/';
@@ -30,8 +31,8 @@ exports.copyright = () => {
 
 exports.renderMenu = (request, slug, active, href, title, icon, asset ) => {
     let context = '<li>';
-    icon = !icon || typeof icon != 'String' ? 'assets/img/it.png' : icon
-    asset = !asset || typeof asset != 'String' ? 'system/' : asset
+    icon = !icon || typeof icon != 'string' ? 'assets/img/it.png' : icon
+    asset = !asset || typeof asset != 'string' ? 'system/' : asset
 	context += '<a href="'+this.route(request, 'system/'+href)+'"'+(slug==active?' class="active"':'')+'>';
     context += '<img src="'+this.asset(request, asset+icon)+'"> ';
 	context += title;
@@ -39,3 +40,81 @@ exports.renderMenu = (request, slug, active, href, title, icon, asset ) => {
     context += '</li>';
     return context;
 } 
+
+exports.addSession = (request, key, value) => {
+    return request.session[key] = value;
+}
+
+exports.getSession = (request, key) => {
+    return request.session[key];
+}
+
+exports.removeSession = (request, key) => {
+    if(request.session[key] != null) delete request.session[key];
+}
+
+exports.addError = (request, key, value) => {
+    if(!(request.session.errors != null))  request.session.errors = {};
+    return request.session.errors[key] = value; 
+}
+
+exports.getError = (request, key) => {
+    let error = {};
+    if(!(request.session.errors != null))  request.session.errors = {};
+    if(request.session.errors[key]!= null){
+        error = request.session.errors[key];
+        delete request.session.errors[key];
+    }
+    return error;
+}
+
+exports.renderError = (request, set, hook, label, addon) => {
+    let context = null;
+    label = !label || typeof label != 'boolean' ? false : label;
+    addon = !addon || typeof addon != 'string' ? ' field-error' : addon;
+    if(set[hook]!=null) {
+        context = label ? ' error' : '<img src="'+this.asset(request, 'system/assets/img/danger.png')+'" width="12px" height="12px" alt="[+]"> <span class="text-red'+addon+'">' + set[hook] +'</span>';
+    }
+    return context;
+}
+
+exports.addFormData = (request, key, value) => {
+    if(!(request.session.formdata != null))  request.session.formdata = {};
+    return request.session.formdata[key] = value; 
+}
+
+exports.getFormData = (request, key) => {
+    let formdata = {};
+    if(!(request.session.formdata != null))  request.session.formdata = {};
+    if(request.session.formdata[key]!= null){
+        formdata = request.session.formdata[key];
+        delete request.session.formdata[key];
+    }
+    return formdata;
+}
+
+exports.formData = (set, hook, optional) => {  
+    optional = !optional || typeof optional != 'string' ? '' : optional;
+    return set[hook]!=null ? ( this.isEmptyString(set[hook]) ? optional : set[hook] ) : optional;
+}
+
+exports.isEmptyString = str => {
+    return !String(str).trim();
+}
+
+exports.isValidEmail = email => {
+    let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return regex.test(email);
+}
+
+exports.isEmptyObject = obj => {
+    return Object.entries(obj).length === 0 && obj.constructor === Object;
+}
+
+exports.password_hash = password => {
+    return bcrypt.hashSync(password, 10);
+}
+
+exports.verify_password = (password, hash) => {
+    return bcrypt.compareSync(password, hash);
+}
