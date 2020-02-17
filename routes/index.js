@@ -21,6 +21,7 @@ const cManageBus = require(pathController + '/CManageBus');
 const cBusSchedule = require(pathController + '/CBusSchedule');
 const cTickets = require(pathController + '/CTickets');
 const cTransaction = require(pathController + '/CTransaction');
+const cLogout = require(pathController + '/CLogout');
 
 
 exports.route = router => {
@@ -35,6 +36,7 @@ exports.route = router => {
     router.get('/system/login', cLogin.get);
     router.post('/system/login', cLogin.post);
     router.get('/system/register', cRegister);
+    router.get('/system/logout', cLogout.get);
     router.get('/system/buscounter', cBusCounter.index);
     router.get('/system/buscounter/add', cBusCounter.add);
     router.get('/system/buscounter/edit', cBusCounter.edit);

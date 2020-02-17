@@ -118,3 +118,26 @@ exports.password_hash = password => {
 exports.verify_password = (password, hash) => {
     return bcrypt.compareSync(password, hash);
 }
+
+exports.generateToken = () => {
+    let dt = new Date().getTime();
+    let token = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return token;
+}
+
+exports.getLoginToken = request => {
+    let token = request.signedCookies != null ? request.signedCookies['__btrs_express_login_token'] : '';
+    return token!=null && !this.isEmptyString(token) ? token : '';
+}
+
+exports.setLoginToken = (response, token) => {
+    return response.cookie('__btrs_express_login_token', token, { signed: true });
+}
+
+exports.removeLoginToken = response => {
+    return response.clearCookie('__btrs_express_login_token');
+}

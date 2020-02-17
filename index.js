@@ -11,12 +11,16 @@ const path = require('path');
 const express = require( 'express' );
 const app = express();
 const router = express.Router();
-const bootstrap = require('./bootstrap'); 
+const bootstrap = require(__dirname + '/bootstrap'); 
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
-const helper = require('./modules/helper');
+const auth = require(__dirname + '/modules/authenticator');
+const helper = require(__dirname +'/modules/helper');
+
+const secretSession = "gTS#2Aa9u1r%1#j52";
+const secretCookie = "aDci#1$L42*1aGE,Qs"
 
 
 app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'default', layoutsDir: __dirname + '/views/layouts/', helpers: helper  }));
@@ -24,9 +28,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(cookieParser());
-app.use(session({secret: 'gTS#2Aa9u1r%1#j52', saveUninitialized: true, resave: false, cookie: { maxAge: 600000 }}));
+app.use(cookieParser(secretCookie));
+app.use(session({secret: secretSession, saveUninitialized: true, resave: false, cookie: { maxAge: 600000 }}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/system', auth);
 app.use(router);
 
 bootstrap(app, router);

@@ -6,6 +6,7 @@
  */
 
 const MUsers = require(__dirname + '/../models/MUsers');
+const MAuthSession = require(__dirname + '/../models/MAuthSession');
 const helper = require(__dirname + '/../modules/helper');
 
 exports.get = (request, response, next) => {
@@ -40,6 +41,9 @@ exports.post = async (request, response, next) => {
     }
 
     if(helper.isEmptyObject(errors)) {
+        const token = helper.generateToken();
+        MAuthSession.storeSession(user.id, token);
+        helper.setLoginToken(response, token);
         return response.redirect(helper.route(request, 'system'));
     }
 
