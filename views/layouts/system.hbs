@@ -60,23 +60,49 @@
             <!-- SYSTEM SIDEBAR -->
             <div class="sidebar" role="navigation">
                 <ul class="menu">
-                    {{{renderMenu request 'index' active '' 'Dashboard'}}}
+                    {{{renderMenu request 'index' active 'system' 'Dashboard'}}}
                     <li class="divider"></li>
-                    {{{renderMenu request 'supportstaff' active 'supportstaff' 'Support Staff'}}}
-                    {{{renderMenu request 'busmanager' active 'busmanager' 'Bus Manager'}}}
-                    {{{renderMenu request 'buscounter' active 'buscounter' 'Bus Counter'}}}
-                    {{{renderMenu request 'counterstaff' active 'counterstaff' 'Counter Staff'}}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'supportstaff' active 'system/supportstaff' 'Support Staff'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'busmanager' active 'system/busmanager' 'Bus Manager'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'buscounter' active 'system/buscounter' 'Bus Counter'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'counterstaff' active 'system/counterstaff' 'Counter Staff'}}}
+                    {{/if}}
                     <li class="divider"></li>
-                    {{{renderMenu request 'managebus' active 'managebus' 'Manage Bus'}}}
-                    {{{renderMenu request 'busschedule' active 'busschedule' 'Bus Schedule'}}}
-                    {{{renderMenu request 'tickets' active 'tickets' 'Tickets'}}}
-                    {{{renderMenu request 'booktickets' active 'booktickets' 'Book Tickets'}}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'managebus' active 'system/managebus' 'Manage Bus'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'busschedule' active 'system/busschedule' 'Bus Schedule'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'tickets' active 'system/tickets' 'Tickets'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'booktickets' active 'system/booktickets' 'Book Tickets'}}}
+                    {{/if}}
                     <li class="divider"></li>
-                    {{{renderMenu request 'discount' active 'discount' 'Discount'}}}
-                    {{{renderMenu request 'transaction' active 'transaction' 'Transactions'}}}
-                    {{{renderMenu request 'paymethod' active 'paymethod' 'Payment Method'}}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'discount' active 'system/discount' 'Discount'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'transaction' active 'system/transaction' 'Transactions'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'paymethod' active 'system/paymethod' 'Payment Method'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
                     {{{renderMenu request 'supportticket' active 'supportticket' 'Support Tickets'}}}
-                    {{{renderMenu request 'settings' active 'settings' 'General Settings'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'settings' active 'system/settings' 'General Settings'}}}
+                    {{/if}}
                 </ul>
             </div>
 

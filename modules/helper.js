@@ -33,7 +33,7 @@ exports.renderMenu = (request, slug, active, href, title, icon, asset ) => {
     let context = '<li>';
     icon = !icon || typeof icon != 'string' ? 'assets/img/it.png' : icon
     asset = !asset || typeof asset != 'string' ? 'system/' : asset
-	context += '<a href="'+this.route(request, 'system/'+href)+'"'+(slug==active?' class="active"':'')+'>';
+	context += '<a href="'+this.route(request, href)+'"'+(slug==active?' class="active"':'')+'>';
     context += '<img src="'+this.asset(request, asset+icon)+'"> ';
 	context += title;
 	context += '</a>';
@@ -140,4 +140,30 @@ exports.setLoginToken = (response, token) => {
 
 exports.removeLoginToken = response => {
     return response.clearCookie('__btrs_express_login_token');
+}
+
+exports.isRoutePermitted = (permissions, route) => { 
+    for(let i = 0; i<permissions.length; i++){
+        let permission = permissions[i];
+        if(permission instanceof RegExp) {
+            if(route.match(permission)) return true;
+        }
+        else if(route===permission) return true;
+    };
+    return false;
+} 
+
+exports.allowed = (request, roles) => {
+    let types = {
+        'admin' : '4',
+        'supportstaff' : '3',
+        'busmanager' : '2',
+        'counterstaff' : '1'
+    }
+    let converted = [];
+    roles = roles.split("|");
+    roles.forEach(role => {
+        if(types[role]!=null) converted.push(types[role]);
+    });
+    return request.user.role!=null ? converted.includes(request.user.role) : false;
 }

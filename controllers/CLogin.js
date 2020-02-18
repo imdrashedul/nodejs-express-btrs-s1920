@@ -42,9 +42,10 @@ exports.post = async (request, response, next) => {
 
     if(helper.isEmptyObject(errors)) {
         const token = helper.generateToken();
-        MAuthSession.storeSession(user.id, token);
-        helper.setLoginToken(response, token);
-        return response.redirect(helper.route(request, 'system'));
+        return MAuthSession.storeSession(user.id, token).then(result => {
+            helper.setLoginToken(response, token);
+            return response.redirect(helper.route(request, 'system'));
+        });  
     }
 
     helper.addError(request, 'login', errors);

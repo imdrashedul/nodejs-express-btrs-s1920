@@ -12,7 +12,6 @@ const AuthSessionTable = database.define('authsession', {
     id: { type: DataTypes.BIGINT(20).UNSIGNED, autoIncrement: true, primaryKey: true },
     userid: { 
         type: DataTypes.BIGINT(20).UNSIGNED, 
-        unique: true, 
         allowNull: false,
         references: { model: 'users', key: 'id' }
     },
@@ -37,7 +36,7 @@ module.exports = {
             token: token,
             expire: expire.format("Y-m-d H:M:S")
         });
-        return await session.save();
+        return session.save();
     },
     //Modify Authentication Session 
     updateExpiry : async session => {

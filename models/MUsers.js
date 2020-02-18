@@ -23,6 +23,12 @@ module.exports = {
     getUsers : () => {
         return UsersTable.findAll({raw: true});
     },
+    // Get User By Id 
+    getUser : id => {
+        return UsersTable.findOne({ where: {
+            id : id
+        }, raw: true});
+    },
     //Get User By Email 
     getUserByEmail : email => {
         return UsersTable.findOne({ where: {
