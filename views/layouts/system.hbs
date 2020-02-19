@@ -29,7 +29,7 @@
                         <div class="usermenu drop">
                             <div class="toggle">
                                 <img src="{{asset request "system/assets/img/default_avatar.png"}}" class="icon" alt="userimg" width="36px" height="36px">
-                                <b class="username">M. Rashedul</b>
+                                <b class="username">{{ request.user.firstname }}</b>
                                 <span class="caret"></span>
                             </div>
                             <div class="content">
@@ -38,8 +38,8 @@
                                         <img src="{{asset request "system/assets/img/default_avatar.png"}}" alt="user">
                                     </div>
                                     <div class="usertext">
-                                        <h4>M. Rashedul Islam</h4>
-                                        <p class="text-muted">rashed.islam.370@gmail.com</p>
+                                        <h4>{{ request.user.firstname }} {{ request.user.lastname}}</h4>
+                                        <p class="text-muted">{{ request.user.email }}</p>
                                         <a href="{{route request 'system/profile'}}" class="btn target green"><span>View Profile</span></a>
                                     </div>
                                 </div>
@@ -60,48 +60,48 @@
             <!-- SYSTEM SIDEBAR -->
             <div class="sidebar" role="navigation">
                 <ul class="menu">
-                    {{{renderMenu request 'index' active 'system' 'Dashboard'}}}
+                    {{{renderMenu request 'index' active 'system' 'Dashboard' 'assets/img/dashboard.png'}}}
                     <li class="divider"></li>
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'supportstaff' active 'system/supportstaff' 'Support Staff'}}}
+                    {{{renderMenu request 'supportstaff' active 'system/supportstaff' 'Support Staff' 'assets/img/support_staff.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'busmanager' active 'system/busmanager' 'Bus Manager'}}}
+                    {{{renderMenu request 'busmanager' active 'system/busmanager' 'Bus Manager' 'assets/img/bus_manager.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'buscounter' active 'system/buscounter' 'Bus Counter'}}}
+                    {{{renderMenu request 'buscounter' active 'system/buscounter' 'Bus Counter' 'assets/img/bus_counter.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'counterstaff' active 'system/counterstaff' 'Counter Staff'}}}
-                    {{/if}}
-                    <li class="divider"></li>
-                    {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'managebus' active 'system/managebus' 'Manage Bus'}}}
-                    {{/if}}
-                    {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'busschedule' active 'system/busschedule' 'Bus Schedule'}}}
-                    {{/if}}
-                    {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'tickets' active 'system/tickets' 'Tickets'}}}
-                    {{/if}}
-                    {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'booktickets' active 'system/booktickets' 'Book Tickets'}}}
+                    {{{renderMenu request 'counterstaff' active 'system/counterstaff' 'Counter Staff' 'assets/img/counter_staff.png'}}}
                     {{/if}}
                     <li class="divider"></li>
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'discount' active 'system/discount' 'Discount'}}}
+                    {{{renderMenu request 'managebus' active 'system/managebus' 'Manage Bus' 'assets/img/manage_bus.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'transaction' active 'system/transaction' 'Transactions'}}}
+                    {{{renderMenu request 'busschedule' active 'system/busschedule' 'Bus Schedule' 'assets/img/bus_schedule.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'paymethod' active 'system/paymethod' 'Payment Method'}}}
+                    {{{renderMenu request 'tickets' active 'system/tickets' 'Tickets' 'assets/img/tickets.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'supportticket' active 'supportticket' 'Support Tickets'}}}
+                    {{{renderMenu request 'booktickets' active 'system/booktickets' 'Book Tickets' 'assets/img/book_tickets.png'}}}
+                    {{/if}}
+                    <li class="divider"></li>
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'discount' active 'system/discount' 'Discount' 'assets/img/discount.png'}}}
                     {{/if}}
                     {{#if (allowed request 'admin')}}
-                    {{{renderMenu request 'settings' active 'system/settings' 'General Settings'}}}
+                    {{{renderMenu request 'transaction' active 'system/transaction' 'Transactions' 'assets/img/transactions.png'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'paymethod' active 'system/paymethod' 'Payment Method' 'assets/img/payment_method.png'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'supportticket' active 'supportticket' 'Support Tickets' 'assets/img/support_ticket.png'}}}
+                    {{/if}}
+                    {{#if (allowed request 'admin')}}
+                    {{{renderMenu request 'settings' active 'system/settings' 'General Settings' 'assets/img/general_settings.png'}}}
                     {{/if}}
                 </ul>
             </div>

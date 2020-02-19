@@ -862,6 +862,10 @@ nav.navbar .usermenu.open .content {
     font-weight: 400;
 }
 
+.sidebar ul.menu>li>a>img {
+    margin-right: 10px;
+}
+
 .sidebar ul.menu>li.divider {
     margin: 7px 0;
     border-top: 1px solid rgba(120,130,140,.13);
