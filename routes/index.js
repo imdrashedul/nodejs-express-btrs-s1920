@@ -5,6 +5,9 @@
  * @see https://github.com/rashed370/nodejs-express-btrs-s1920
  */
 
+const uploader = require( __dirname + '/../modules/uploader');
+
+//Controllers
 const pathController = __dirname + '/../controllers/';
 const cLanding = require( pathController + 'CLanding' );
 const cLogin = require(pathController + '/CLogin');
@@ -22,6 +25,7 @@ const cBusSchedule = require(pathController + '/CBusSchedule');
 const cTickets = require(pathController + '/CTickets');
 const cTransaction = require(pathController + '/CTransaction');
 const cLogout = require(pathController + '/CLogout');
+const CSupportStaff = require(pathController + '/CSupportStaff');
 
 
 exports.route = router => {
@@ -51,4 +55,7 @@ exports.route = router => {
     router.get('/system/busschedule/edit', cBusSchedule.edit);
     router.get('/system/tickets', cTickets);
     router.get('/system/transaction', cTransaction);
+    router.get('/system/supportstaff', CSupportStaff.index);
+    router.get('/system/supportstaff/add', CSupportStaff.addget);
+    router.post('/system/supportstaff/add', uploader.single("photograph"), CSupportStaff.addpost);
 };

@@ -19,41 +19,39 @@ const AuthSessionTable = database.define('authsession', {
     expire: { type: DataTypes.DATE, defaultValue: DataTypes.literal('CURRENT_TIMESTAMP') }, 
 }, {timestamps: false, freezeTableName: true});
 
-module.exports = {
-    instance : AuthSessionTable,
-    //Get Authentication Session
-    getSession : token => {
-        return AuthSessionTable.findOne({where: {
-            token: token
-        }, raw: true});
-    },
-    //Store Authentication Session
-    storeSession : async (userid, token) => {
-        let expire = datetime.create();
-        expire.offsetInHours(1);
-        const session = await AuthSessionTable.create({
-            userid: userid,
-            token: token,
-            expire: expire.format("Y-m-d H:M:S")
-        });
-        return session.save();
-    },
-    //Modify Authentication Session 
-    updateExpiry : async session => {
-        let expire = datetime.create();
-        expire.offsetInHours(1);
-        return await AuthSessionTable.update({ expire: expire.format("Y-m-d H:M:S") }, { where: {id: session.id} });
-    },
-    //Remove Authentication Session 
-    removeSession : async token => {
-        return await AuthSessionTable.destroy({
-            where: { token: token }
-        });
-    },
-    //Remove Expired Session 
-    removeExpired : async () => {
-        return await AuthSessionTable.destroy({
-            where: { expire: {[DataTypes.Op.lt]: new Date()} }
-        });
-    }
-};
+exports.instance = AuthSessionTable,
+//Get Authentication Session
+exports.getSession = token => {
+    return AuthSessionTable.findOne({where: {
+        token: token
+    }, raw: true});
+}
+//Store Authentication Session
+exports.storeSession = async (userid, token) => {
+    let expire = datetime.create();
+    expire.offsetInHours(1);
+    const session = await AuthSessionTable.create({
+        userid: userid,
+        token: token,
+        expire: expire.format("Y-m-d H:M:S")
+    });
+    return session.save();
+}
+//Modify Authentication Session 
+exports.updateExpiry = async session => {
+    let expire = datetime.create();
+    expire.offsetInHours(1);
+    return await AuthSessionTable.update({ expire: expire.format("Y-m-d H:M:S") }, { where: {id: session.id} });
+}
+//Remove Authentication Session 
+exports.removeSession = async token => {
+    return await AuthSessionTable.destroy({
+        where: { token: token }
+    });
+}
+//Remove Expired Session 
+exports.removeExpired = async () => {
+    return await AuthSessionTable.destroy({
+        where: { expire: {[DataTypes.Op.lt]: new Date()} }
+    });
+}

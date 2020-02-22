@@ -105,3 +105,6 @@ dist
 
 # Visual Studio Code Work Space
 *.code-workspace
+
+# File Uploaded by Users
+uploads

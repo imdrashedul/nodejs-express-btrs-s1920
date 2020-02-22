@@ -17,22 +17,26 @@ const UsersTable = database.define('users', {
     registered: { type: DataTypes.DATE, allowNull: false, defaultValue: DataTypes.literal('CURRENT_TIMESTAMP') },
 }, {timestamps: false});
 
-module.exports = {
-    instance : UsersTable,
-    // Get All Users
-    getUsers : () => {
-        return UsersTable.findAll({raw: true});
-    },
-    // Get User By Id 
-    getUser : id => {
-        return UsersTable.findOne({ where: {
-            id : id
-        }, raw: true});
-    },
-    //Get User By Email 
-    getUserByEmail : email => {
-        return UsersTable.findOne({ where: {
-            email : email
-        }, raw: true});
-    }
+exports.instance = UsersTable;
+// Create USer
+exports.addUser = async details => {
+    const user = await UsersTable.create(details);
+    return user.save();
 }
+// Get All Users
+exports.getUsers = () => {
+    return UsersTable.findAll({raw: true});
+}
+// Get User By Id 
+exports.getUser = id => {
+    return UsersTable.findOne({ where: {
+        id : id
+    }, raw: true});
+}
+//Get User By Email 
+exports.getUserByEmail = email => {
+    return UsersTable.findOne({ where: {
+        email : email
+    }, raw: true});
+}
+

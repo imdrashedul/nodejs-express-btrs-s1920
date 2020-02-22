@@ -18,20 +18,38 @@ const UserDetailsTable = database.define('userdetails', {
     data: { type: DataTypes.TEXT('long'), allowNull: false }
 }, {timestamps: false});
 
-module.exports = {
-    instance : UserDetailsTable,
-    getAll : async userid => {
-        let details = await UserDetailsTable.findAll({where : { userid : userid }, raw: true});
-        let data = {};
-        if(details.length>0) {
-            details.forEach(detail => {
-                data[detail.type] = detail.data;
-            });
-        }
-        return data;
-    },
+exports.instance = UserDetailsTable;
 
-    getOne : async (userid, type) => {
-       return UserDetailsTable.findAll({where : { userid : userid }, raw: true});
+exports.getAll = async userid => {
+    let details = await UserDetailsTable.findAll({where : { userid : userid }, raw: true});
+    let data = {};
+    if(details.length>0) {
+        details.forEach(detail => {
+            data[detail.type] = detail.data;
+        });
     }
+    return data;
+}
+
+exports.addOne = async details => {
+    const userdetails = await UserDetailsTable.create(details);
+    return userdetails.save();
+}
+
+exports.addBulk = async rows => {
+    for(let i = 0; i<rows.length; i++) {
+        await this.addOne(rows[i]);
+    }
+}
+
+exports.map = data => {
+    return {
+        userid : data[0],
+        type : data[1],
+        data : data[2]
+    }
+}
+    
+exports.getOne = async (userid, type) => {
+    return UserDetailsTable.findAll({where : { userid : userid }, raw: true});
 }

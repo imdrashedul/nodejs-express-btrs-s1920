@@ -1,0 +1,221 @@
+<div class="block">
+    <div class="header">
+        <b>Add Support Staff</b>
+        <a href="{{route request 'system/supportstaff'}}" class="btn back red" title="Cancel"><span>Cancel</span></a>
+    </div>
+    <div class="body">
+        <form action="{{route request 'system/supportstaff/add'}}" method="POST" enctype="multipart/form-data">
+            <h4 class="block divider left"><span>Personal Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'first_name' true}}">
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" id="first_name" placeholder="Enter First Name" value="{{formData formdata 'first_name'}}"><br/>
+                            {{{renderError request errors 'first_name'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'last_name' true}}">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" placeholder="Enter Last Name" value="{{formData formdata 'last_name'}}"><br/>
+                            {{{renderError request errors 'last_name'}}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'dob' true}}">
+                            <label for="dob_day">Date of Birth</label><br>
+                            <select name="dob_day" id="dob_day" style="width:30%">
+                                <option value=''>Day</option>
+                                {{{dmyProvider 'day' true (objvalue formdata 'dob_day' '')}}}
+                            </select>
+                            <select name="dob_month" style="width:40%">
+                                <option value=''>Month</option>
+                                {{{dmyProvider 'month' true (objvalue formdata 'dob_month' '')}}}
+                            </select>
+                            <select name="dob_year" style="width:26.77%">
+                                <option value=''>Year</option>
+                                {{{dmyProvider 'year' true (objvalue formdata 'dob_year' '')}}}
+                            </select>
+                            <br>{{{renderError request errors 'dob'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'gender' true}}">
+                            <label for="gender_male">Gender</label><br>
+                            <label class="radio m-r-45">
+                                <input type="radio" name="gender" id="gender_male" value="m"{{selected 'm' (objvalue formdata 'gender' '') 'radio'}}> Male
+                                <span class="check"></span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="gender" id="gender_female" value="f"{{selected 'f' (objvalue formdata 'gender' '') 'radio'}}> Female
+                                <span class="check"></span>
+                            </label>
+                            <br>
+                            {{{renderError request errors 'gender'}}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'marital_status' true}}">
+                            <label for="marital_status">Marital Status</label><br>
+                            <select name="marital_status" id="marital_status">
+                                <option value="">Select</option>
+                                <option value="Unmarried"{{selected 'Unmarried' (objvalue formdata 'marital_status' '')}}>Unmarried</option>
+                                <option value="Married"{{selected 'Married' (objvalue formdata 'marital_status' '')}}>Married</option>
+                                <option value="Divorced"{{selected 'Divorced' (objvalue formdata 'marital_status' '')}}>Divorced</option>
+                                <option value="Widowed"{{selected 'Widowed' (objvalue formdata 'marital_status' '')}}>Widowed</option>
+                            </select><br>
+                            {{{renderError request errors 'marital_status'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'nid_passport' true}}">
+                            <label for="nid_passport">NID / Passport</label><br>
+                            <input type="text" name="nid_passport" id="nid_passport" placeholder="Enter NID or Passport No" value="{{formData formdata 'nid_passport'}}"><br/>
+                            {{{renderError request errors 'nid_passport'}}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'photograph' true}}">
+                            <label for="photograph">Photograph</label><br>
+                            <div class="grid">
+                                <div class="row">
+                                    <div class="column-3">
+                                        <img class="upload-preview photograph m-t-5" src="{{asset request 'system/assets/img/gentelman_avatar.jpg'}}" width="80px" height="80px" defaultpreview="{{asset request 'system/assets/img/gentelman_avatar.jpg'}}">
+                                    </div>
+                                    <div class="column-9" style="padding-right: 10px; vertical-align: top">
+                                        <input type="text" class="upload-name photograph" value="" readonly style="margin-top: 9px">
+                                        <button type="button" class="file-clear photograph" filetarget="photograph">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="174.239" height="174.239" viewBox="0 0 174.239 174.239">
+                                                <path d="M146.537,1.047c-1.396-1.396-3.681-1.396-5.077,0L89.658,52.849c-1.396,1.396-3.681,1.396-5.077,0L32.78,1.047 c-1.396-1.396-3.681-1.396-5.077,0L1.047,27.702c-1.396,1.396-1.396,3.681,0,5.077l51.802,51.802c1.396,1.396,1.396,3.681,0,5.077L1.047,141.46c-1.396,1.396-1.396,3.681,0,5.077l26.655,26.655c1.396,1.396,3.681,1.396,5.077,0l51.802-51.802c1.396-1.396,3.681-1.396,5.077,0l51.801,51.801c1.396,1.396,3.681,1.396,5.077,0l26.655-26.655c1.396-1.396,1.396-3.681,0-5.077l-51.801-51.801c-1.396-1.396-1.396-3.681,0-5.077l51.801-51.801c1.396-1.396,1.396-3.681,0-5.077L146.537,1.047z"/>
+                                            </svg>
+                                            Clear
+                                        </button>
+                                        <label class="file-input photograph">
+                                            <input type="file" accept="image/jpeg,image/png,image/gif" name="photograph" id="photograph">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                                                <path d="M480,80h-96c-17.688,0-32,14.313-32,32H96v32h288h88.969l-43.094,215.5L384,176H0l64,256h384l64-320l0,0C512,94.313,497.688,80,480,80z"/>
+                                            </svg>
+                                            <span class="m-l-5">Browse..</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                {{#if (hasobjitem errors 'photograph')}}
+                                    <div class="row">
+                                        <div class="column-3"></div>
+                                        <div class="column-9">
+                                            {{{renderError request errors 'photograph'}}}
+                                        </div>
+                                    </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="block divider left"><span>Contact Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'street' true}}">
+                            <label for="street">Street Address</label><br>
+                            <input type="text" name="street" id="street" placeholder="Enter Street Address" value="{{formData formdata 'street'}}"><br/>
+                            {{{renderError request errors 'street'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'mobile' true}}">
+                            <label for="mobile">Mobile Number</label><br>
+                            <input type="text" name="mobile" id="mobile" placeholder="(+88) 0XXXX-XXXXXX" value="{{formData formdata 'mobile'}}"><br/>
+                            {{{renderError request errors 'mobile'}}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'city' true}}">
+                            <label for="city">City</label><br>
+                            <input type="text" name="city" id="city" placeholder="Enter City Name" value="{{formData formdata 'city'}}"><br/>
+                            {{{renderError request errors 'city'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'zip' true}}">
+                            <label for="zip">Zip Code</label><br>
+                            <input type="text" name="zip" id="zip" placeholder="Enter Zip/Postal Code" value="{{formData formdata 'zip'}}"><br/>
+                            {{{renderError request errors 'zip'}}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'country' true}}" style="padding-right: 10px">
+                            <label for="country">Country</label><br>
+                            <select name="country" id="country" >
+                                <option value="">Select</option>
+                                <option value="bd"{{selected 'bd' (objvalue formdata 'country' '')}}>Bangladesh</option>
+                            </select><br>
+                            {{{renderError request errors 'country'}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="block divider left"><span>Official Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'hourlyrate' true}}">
+                            <label for="hourlyrate">Hourly Salary</label>
+                            <input type="text" name="hourlyrate" id="hourlyrate" value="{{formData formdata 'hourlyrate' '0'}}"><br/>
+                            {{{renderError request errors 'hourlyrate'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'activehours' true}}">
+                            <label for="activehours">Total Active</label>
+                            <input type="text" name="activehours" id="activehours" value="{{formData formdata 'activehours' '0'}}"><br/>
+                            {{{renderError request errors 'activehours'}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="block divider left"><span>Login Information</span></h4>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-12">
+                        <div class="inputset{{renderError request errors 'usermail' true}}">
+                            <label for="usermail">Email Address</label><br>
+                            <input type="email" name="usermail" id="usermail" placeholder="Enter email address" value="{{formData formdata 'usermail'}}"><br/>
+                            {{{renderError request errors 'usermail'}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="row">
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'password' true}}">
+                            <label for="password">Password</label><br>
+                            <input type="password" name="password" id="password"><br/>
+                            {{{renderError request errors 'password'}}}
+                        </div>
+                    </div>
+                    <div class="column-6">
+                        <div class="inputset{{renderError request errors 'repassword' true}}">
+                            <label for="repassword">Confirm Password</label><br>
+                            <input type="password" name="repassword" id="repassword"><br/>
+                            {{{renderError request errors 'repassword'}}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn submit" name="submit" value="Add Staff">
+        </form>
+    </div>
+</div>

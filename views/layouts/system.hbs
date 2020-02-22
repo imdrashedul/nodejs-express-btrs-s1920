@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>BTRS - {{ title }} </title>
-        <link rel="stylesheet" href="{{asset request "system/assets/css/styles.css"}}">
         <link rel="stylesheet" href="{{asset request "assets/css/flatpickr.min.css"}}">
         <link rel="stylesheet" href="{{asset request "assets/css/autocomplete.css"}}">
+        {{{resources extracss 'css'}}}
+        <link rel="stylesheet" href="{{asset request "system/assets/css/styles.css"}}">
         <link rel="shortcut icon" href="{{asset request "system/assets/img/fav.png"}}" type="image/png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
@@ -136,6 +137,7 @@
         <script type="text/javascript" src="{{asset request "assets/js/ajax.js"}}"></script>
         <script type="text/javascript" src="{{asset request "system/assets/js/script.js"}}"></script>
         <script type="text/javascript" src="{{asset request "assets/js/autocomplete.js"}}"></script>
+        {{{resources extrajs 'js'}}}
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('.preloader').classList.add('hidden');

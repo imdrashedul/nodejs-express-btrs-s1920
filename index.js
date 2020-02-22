@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser(secretCookie));
 app.use(session({secret: secretSession, saveUninitialized: true, resave: false, cookie: { maxAge: 600000 }}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/system', auth);
 app.use(router);
 
